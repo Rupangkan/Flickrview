@@ -50,7 +50,7 @@ class ViewImage: Fragment() {
             .apply(options)
             .into(binding.imageView)
 
-        binding.text2.setText(homeViewModel.title?.value)
+        binding.text2.text = homeViewModel.title?.value
     }
 
 
