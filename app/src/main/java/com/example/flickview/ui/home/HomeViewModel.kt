@@ -36,6 +36,9 @@ constructor(private val repository: Repository) : ViewModel() {
     private val _url = MutableLiveData("")
     val url: LiveData<String>? = _url
 
+    private val _title = MutableLiveData("")
+    val title: LiveData<String>? = _title
+
     fun get() {
         viewModelScope.launch {
             _repo.value = repository.loadSpecialUsers()
@@ -50,6 +53,10 @@ constructor(private val repository: Repository) : ViewModel() {
 
     fun setUrl(url: String){
         _url.value = url
+    }
+
+    fun setTitle(title: String){
+        _title.value = title
     }
 
 

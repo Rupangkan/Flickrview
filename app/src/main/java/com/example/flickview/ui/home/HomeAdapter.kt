@@ -53,6 +53,7 @@ class HomeAdapter(val homeViewModel: HomeViewModel, private val ctx: Context, /*
         Log.d("Adapter", dataset.toString())
 
         val item = dataset?.get(position)?.url_s
+        val title = dataset?.get(position)?.title
         val options: RequestOptions = RequestOptions()
             .centerCrop()
             .placeholder(com.example.flickview.R.drawable.ic_launcher_foreground)
@@ -64,8 +65,11 @@ class HomeAdapter(val homeViewModel: HomeViewModel, private val ctx: Context, /*
             .into(holder.imageView)
 
         holder.imageView.setOnClickListener{
-            if (item != null) {
-                homeViewModel.setUrl(item)
+            if (item != null && title!=null) {
+                homeViewModel.apply {
+                    setUrl(item)
+                    setTitle(title)
+                }
             }
             val action: NavDirections = HomeFragmentDirections.actionNavHomeToViewImage()
             holder.imageView.findNavController().navigate(action)

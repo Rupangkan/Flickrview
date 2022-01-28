@@ -46,8 +46,11 @@ class ViewImage: Fragment() {
 
         Glide.with(this)
             .load(homeViewModel.url?.value)
+            .circleCrop()
             .apply(options)
             .into(binding.imageView)
+
+        binding.text2.setText(homeViewModel.title?.value)
     }
 
 
